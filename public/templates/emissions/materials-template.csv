@@ -1,0 +1,3 @@
+codi_material;nom;categoria;factor_emissio;unitat;font_dades;any_referencia;versio_dap;incertesa_percentatge;es_credit
+10a;arido_natural;ARIDS;4.48;T;DAP FdA AN;2022;v1;5;false
+16a;RARx_caco3;ALTRES;-141;T;DAP CIRTEC;2024;v1;10;true

@@ -1,0 +1,163 @@
+{
+  "app": {
+    "name": "Emissionsv2 SaaS",
+    "subtitle": "Plataforma de firmes y certificacion ambiental",
+    "tenant": "Tenant",
+    "demoOrg": "Org Demo"
+  },
+  "language": {
+    "label": "Idioma",
+    "ca": "Catalan",
+    "es": "Espanol",
+    "en": "Ingles",
+    "fr": "Frances"
+  },
+  "auth": {
+    "loginTitle": "Iniciar sesion",
+    "registerTitle": "Crear cuenta",
+    "email": "Email",
+    "password": "Contrasena",
+    "confirmPassword": "Confirmar contrasena",
+    "name": "Nombre",
+    "lastName": "Apellidos",
+    "organization": "Organizacion",
+    "submitLogin": "Entrar",
+    "submitRegister": "Registrarse",
+    "submittingLogin": "Accediendo...",
+    "submittingRegister": "Registrando...",
+    "noAccount": "No tienes cuenta?",
+    "haveAccount": "Ya tienes cuenta?",
+    "goRegister": "Registrate",
+    "goLogin": "Iniciar sesion",
+    "loginError": "No se ha podido iniciar sesion",
+    "registerError": "No se ha podido completar el registro",
+    "validation": {
+      "emailInvalid": "Email invalido",
+      "passwordRequired": "La contrasena es obligatoria",
+      "organizationRequired": "Nombre de organizacion obligatorio",
+      "nameRequired": "Nombre obligatorio",
+      "passwordMin": "Minimo 10 caracteres",
+      "passwordUpper": "Se requiere una mayuscula",
+      "passwordLower": "Se requiere una minuscula",
+      "passwordNumber": "Se requiere un numero",
+      "passwordSpecial": "Se requiere un caracter especial",
+      "passwordConfirm": "Confirma la contrasena",
+      "passwordMismatch": "Las contrasenas no coinciden"
+    }
+  },
+  "dashboard": {
+    "title": "Plataforma Emissionsv2",
+    "authenticatedAs": "Autenticado como {{email}}.",
+    "userFallback": "usuario",
+    "createCertification": "Crear certificacion",
+    "projects": "Proyectos",
+    "materials": "Materiales",
+    "versions": "Versiones",
+    "emissionsFactors": "Factores de emision",
+    "logout": "Cerrar sesion",
+    "kpi": {
+      "activeTenants": "Tenants activos",
+      "optimizedPavements": "Firmes optimizados",
+      "certificatesIssued": "Certificados emitidos"
+    }
+  },
+  "projects": {
+    "title": "Proyectos",
+    "newProject": "Nuevo proyecto",
+    "filters": "Filtros",
+    "projectNamePlaceholder": "Nombre del proyecto",
+    "allStatuses": "Todos los estados",
+    "status": {
+      "DRAFT": "Borrador",
+      "ACTIVE": "Activo",
+      "COMPLETED": "Completado",
+      "ARCHIVED": "Archivado"
+    },
+    "list": "Lista de proyectos",
+    "code": "Codigo",
+    "name": "Nombre",
+    "date": "Fecha",
+    "actions": "Acciones",
+    "detail": "Detalle",
+    "delete": "Eliminar",
+    "loading": "Cargando...",
+    "empty": "No hay proyectos",
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "pageOf": "Pagina {{page}} de {{totalPages}}",
+    "createModalTitle": "Crear proyecto",
+    "invalidProject": "Proyecto invalido",
+    "backToList": "Volver a la lista",
+    "editModal": "Editar en modal",
+    "detailTitle": "Detalle del proyecto"
+  },
+  "certificates": {
+    "pageTitle": "Generador de certificados PDF",
+    "generatorTitle": "Generador de certificado",
+    "listTitle": "Lista de certificados",
+    "previewTitle": "Vista previa del certificado",
+    "manufacturer": "Fabricante",
+    "project": "Proyecto",
+    "work": "Obra",
+    "mix": "Mezcla",
+    "regulatoryResult": "Resultado normativo",
+    "compliant": "Cumple",
+    "nonCompliant": "No cumple",
+    "progress": "Progreso: {{value}}%",
+    "ready": "Listo para generar PDF",
+    "generate": "Generar PDF",
+    "generating": "Generando...",
+    "refresh": "Actualizar",
+    "download": "Descargar",
+    "revoke": "Revocar",
+    "code": "Codigo",
+    "total": "Total (kg CO2e/t)",
+    "state": "Estado",
+    "actions": "Acciones",
+    "empty": "No hay certificados emitidos.",
+    "errors": {
+      "generate": "No se ha podido generar el certificado",
+      "list": "No se han podido cargar los certificados",
+      "get": "No se ha podido cargar el certificado",
+      "revoke": "No se ha podido revocar el certificado",
+      "download": "No se ha podido descargar el PDF"
+    },
+    "status": {
+      "VALID": "Valido",
+      "CADUCAT": "Caducado",
+      "REVOCAT": "Revocado"
+    }
+  },
+  "projectForm": {
+    "close": "Cerrar",
+    "code": "Codigo",
+    "name": "Nombre",
+    "description": "Descripcion",
+    "status": "Estado",
+    "imd": "IMD",
+    "vp": "% VP",
+    "layoutType": "Tipo de trazado",
+    "climateZone": "Zona climatica",
+    "life": "Vida util",
+    "growth": "Crecimiento anual",
+    "lat": "Latitud",
+    "lng": "Longitud",
+    "saveDraft": "Guardar como borrador",
+    "saving": "Guardando...",
+    "save": "Guardar",
+    "validation": {
+      "codeRequired": "Codigo obligatorio",
+      "nameRequired": "Nombre obligatorio"
+    }
+  },
+  "bim": {
+    "title": "Exportador BIM (IFC4)",
+    "structureToExport": "Estructura a exportar",
+    "downloadIfc": "Descargar IFC",
+    "compatibility": "Compatibilidad e importacion",
+    "revit": "Revit: File > Open > IFC o Link IFC.",
+    "archicad": "ArchiCAD: File > Interoperability > IFC > Open IFC Model.",
+    "tekla": "Tekla: File > Import > Insert reference model > IFC.",
+    "freecad": "FreeCAD: Workbench BIM > Import IFC."
+  }
+}

@@ -1,0 +1,13 @@
+node_modules
+dist
+coverage
+.git
+.github
+backend/node_modules
+backend/dist
+backend/coverage
+playwright-report
+test-results
+*.log
+.env
+.env.*

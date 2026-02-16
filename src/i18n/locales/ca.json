@@ -1,0 +1,163 @@
+{
+  "app": {
+    "name": "Emissionsv2 SaaS",
+    "subtitle": "Plataforma de ferms i certificacio ambiental",
+    "tenant": "Tenant",
+    "demoOrg": "Demo Org"
+  },
+  "language": {
+    "label": "Idioma",
+    "ca": "Catala",
+    "es": "Castella",
+    "en": "Angles",
+    "fr": "Frances"
+  },
+  "auth": {
+    "loginTitle": "Iniciar sessio",
+    "registerTitle": "Crear compte",
+    "email": "Email",
+    "password": "Contrasenya",
+    "confirmPassword": "Confirmar contrasenya",
+    "name": "Nom",
+    "lastName": "Cognoms",
+    "organization": "Organitzacio",
+    "submitLogin": "Entrar",
+    "submitRegister": "Registrar-se",
+    "submittingLogin": "Accedint...",
+    "submittingRegister": "Registrant...",
+    "noAccount": "No tens compte?",
+    "haveAccount": "Ja tens compte?",
+    "goRegister": "Registra't",
+    "goLogin": "Inicia sessio",
+    "loginError": "No s'ha pogut iniciar sessio",
+    "registerError": "No s'ha pogut completar el registre",
+    "validation": {
+      "emailInvalid": "Email invalid",
+      "passwordRequired": "La contrasenya es obligatoria",
+      "organizationRequired": "Nom d'organitzacio obligatori",
+      "nameRequired": "Nom obligatori",
+      "passwordMin": "Minim 10 caracters",
+      "passwordUpper": "Cal una majuscula",
+      "passwordLower": "Cal una minuscula",
+      "passwordNumber": "Cal un numero",
+      "passwordSpecial": "Cal un caracter especial",
+      "passwordConfirm": "Confirma la contrasenya",
+      "passwordMismatch": "Les contrasenyes no coincideixen"
+    }
+  },
+  "dashboard": {
+    "title": "Emissionsv2 Platform",
+    "authenticatedAs": "Autenticat com {{email}}.",
+    "userFallback": "usuari",
+    "createCertification": "Crear certificacio",
+    "projects": "Projectes",
+    "materials": "Materials",
+    "versions": "Versions",
+    "emissionsFactors": "Factors Emissio",
+    "logout": "Logout",
+    "kpi": {
+      "activeTenants": "Tenants actius",
+      "optimizedPavements": "Ferms optimitzats",
+      "certificatesIssued": "Certificats emesos"
+    }
+  },
+  "projects": {
+    "title": "Projectes",
+    "newProject": "Nou projecte",
+    "filters": "Filtres",
+    "projectNamePlaceholder": "Nom del projecte",
+    "allStatuses": "Tots els estats",
+    "status": {
+      "DRAFT": "Esborrany",
+      "ACTIVE": "Actiu",
+      "COMPLETED": "Completat",
+      "ARCHIVED": "Arxiuat"
+    },
+    "list": "Llista de projectes",
+    "code": "Codi",
+    "name": "Nom",
+    "date": "Data",
+    "actions": "Accions",
+    "detail": "Detall",
+    "delete": "Eliminar",
+    "loading": "Carregant...",
+    "empty": "No hi ha projectes",
+    "prev": "Anterior",
+    "next": "Seguent",
+    "pageOf": "Pagina {{page}} de {{totalPages}}",
+    "createModalTitle": "Crear projecte",
+    "invalidProject": "Projecte invalid",
+    "backToList": "Tornar a la llista",
+    "editModal": "Editar en modal",
+    "detailTitle": "Detall del projecte"
+  },
+  "certificates": {
+    "pageTitle": "Generador de certificats PDF",
+    "generatorTitle": "Generador de certificat",
+    "listTitle": "Llista de certificats",
+    "previewTitle": "Preview certificat",
+    "manufacturer": "Fabricant",
+    "project": "Projecte",
+    "work": "Obra",
+    "mix": "Mescla",
+    "regulatoryResult": "Resultat normatiu",
+    "compliant": "Compleix",
+    "nonCompliant": "No compleix",
+    "progress": "Progres: {{value}}%",
+    "ready": "Preparat per generar PDF",
+    "generate": "Generar PDF",
+    "generating": "Generant...",
+    "refresh": "Actualitzar",
+    "download": "Descarregar",
+    "revoke": "Revocar",
+    "code": "Codi",
+    "total": "Total (kg CO2e/t)",
+    "state": "Estat",
+    "actions": "Accions",
+    "empty": "No hi ha certificats emesos.",
+    "errors": {
+      "generate": "No s'ha pogut generar el certificat",
+      "list": "No s'han pogut carregar els certificats",
+      "get": "No s'ha pogut carregar el certificat",
+      "revoke": "No s'ha pogut revocar el certificat",
+      "download": "No s'ha pogut descarregar el PDF"
+    },
+    "status": {
+      "VALID": "Valid",
+      "CADUCAT": "Caducat",
+      "REVOCAT": "Revocat"
+    }
+  },
+  "projectForm": {
+    "close": "Tancar",
+    "code": "Codi",
+    "name": "Nom",
+    "description": "Descripcio",
+    "status": "Estat",
+    "imd": "IMD",
+    "vp": "% VP",
+    "layoutType": "Tipus tracat",
+    "climateZone": "Zona climatica",
+    "life": "Vida util",
+    "growth": "Creixement anual",
+    "lat": "Latitud",
+    "lng": "Longitud",
+    "saveDraft": "Guardar com esborrany",
+    "saving": "Guardant...",
+    "save": "Guardar",
+    "validation": {
+      "codeRequired": "Codi obligatori",
+      "nameRequired": "Nom obligatori"
+    }
+  },
+  "bim": {
+    "title": "Exportador BIM (IFC4)",
+    "structureToExport": "Estructura a exportar",
+    "downloadIfc": "Descarregar IFC",
+    "compatibility": "Compatibilitat i importacio",
+    "revit": "Revit: File > Open > IFC o Link IFC.",
+    "archicad": "ArchiCAD: File > Interoperability > IFC > Open IFC Model.",
+    "tekla": "Tekla: File > Import > Insert reference model > IFC.",
+    "freecad": "FreeCAD: Workbench BIM > Import IFC."
+  }
+}

@@ -1,0 +1,405 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RolUsuari {
+  ADMIN
+  ADMIN_EMISSIONS
+  PROJECTISTA
+  FABRICANT
+  LECTOR
+}
+
+enum EstatProjecte {
+  ESBORRANY
+  ACTIU
+  COMPLETAT
+  ARXIUAT
+}
+
+enum EstatVersioBaseDades {
+  ESBORRANY
+  PUBLICADA
+  OBSOLETA
+}
+
+enum TipusMaterial {
+  MESCLA_BITUMINOSA
+  MACADAM
+  ESTABILITZAT
+  GRAVA
+  ALTRE
+}
+
+enum TipusUbicacio {
+  OBRA
+  PLANTA
+  PEDRERA
+  ALTRE
+}
+
+enum CategoriaMaterialEmissio {
+  ARIDS
+  BETUMS
+  EMULSIONS
+  ADDITIUS
+  CIMENTS
+  RA
+  FIBRES
+  ALTRES
+}
+
+enum UnitatMesura {
+  KG
+  T
+  M3
+  L
+  KWH
+  H
+  T_KM
+  MJ
+  GJ
+}
+
+enum CombustibleTipus {
+  GASOLEO
+  FUELOLEO
+  GAS_NATURAL
+  ALTRE
+}
+
+enum TipusConsumElectric {
+  MOTORS_CENTRAL
+  CALENTAMENT_LIGANTS
+  ALTRE
+}
+
+enum EtapaEmissions {
+  A1
+  A2
+  A3
+  A4
+  A5
+  A1_A5
+}
+
+enum TipologiaMescla {
+  MBC_CONVENCIONAL
+  MBC_AMB_RA
+  MBT
+  AUTL
+  ALTRE
+}
+
+enum TipusCanviEmissio {
+  CREAT
+  MODIFICAT
+  ELIMINAT
+  IMPORTAT
+  ACTIVACIO_VERSIO
+}
+
+model Organitzacio {
+  id        String    @id @default(cuid())
+  nom       String
+  tipus     String?
+  nif       String?   @unique
+  codi      String    @unique
+  usuaris   Usuari[]
+  projectes Projecte[]
+  ubicacions Ubicacio[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Usuari {
+  id             String       @id @default(cuid())
+  email          String       @unique
+  nom            String
+  cognoms        String?
+  passwordHash   String
+  rol            RolUsuari    @default(PROJECTISTA)
+  actiu          Boolean      @default(true)
+  organitzacioId String
+  organitzacio   Organitzacio @relation(fields: [organitzacioId], references: [id], onDelete: Cascade)
+  refreshTokens  RefreshToken[]
+  versionsCreades VersioBaseDades[] @relation("VersioCreador")
+  auditoriesMaterials MaterialAuditLog[]
+  auditoriesEmissions EmissionsChangeLog[]
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model Projecte {
+  id             String        @id @default(cuid())
+  codi           String        @unique
+  nom            String
+  descripcio     String?
+  estat          EstatProjecte @default(ESBORRANY)
+  organitzacioId String
+  organitzacio   Organitzacio  @relation(fields: [organitzacioId], references: [id], onDelete: Cascade)
+  imd            Int?
+  percentatgeVp  Float?
+  categoriaTransitAuto   String?
+  categoriaTransitManual String?
+  usaCategoriaManual     Boolean       @default(false)
+  tipusTracat    String?
+  zonaClimatica  String?
+  vidaUtil       Int?
+  creixementAnual Float?
+  latitud        Decimal?      @db.Decimal(10, 7)
+  longitud       Decimal?      @db.Decimal(10, 7)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  @@index([organitzacioId, estat])
+  @@index([nom])
+}
+
+model VersioBaseDades {
+  id             String               @id @default(cuid())
+  numero         String               @unique
+  descripcio     String?
+  estat          EstatVersioBaseDades @default(ESBORRANY)
+  dataPublicacio DateTime?
+  esActual       Boolean              @default(false)
+  fitxersFont    Json?
+  createdById    String?
+  createdBy      Usuari?              @relation("VersioCreador", fields: [createdById], references: [id], onDelete: SetNull)
+  materials      Material[]
+  factorsEmissioMaterial  FactorEmissioMaterial[]
+  factorsEmissioTransport FactorEmissioTransport[]
+  constantsCalorifiques   ConstantCalorifica[]
+  combustiblesFabricacio  CombustibleFabricacio[]
+  consumsElectrics        ConsumElectric[]
+  equipsPosadaEnObra      EquipPosadaEnObra[]
+  limitsNormatiusEmissions LimitNormatiuEmissions[]
+  canvisEmissions         EmissionsChangeLog[]
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+}
+
+model Material {
+  id                    String           @id @default(cuid())
+  codi                  String           @unique
+  nom                   String
+  tipus                 TipusMaterial
+  descripcio            String?
+  modulElasticMpa       Float?
+  coeficientPoisson     Float?
+  resistenciaFlexioMpa  Float?
+  resistenciaCompressioMpa Float?
+  densitatTM3           Float?
+  factorEmissioA1       Float?
+  fontFactorEmissio     String?
+  preuBaseEurT          Float?
+  unitatPreu            String           @default("t")
+  actiu                 Boolean          @default(true)
+  versioBaseDadesId     String
+  versioBaseDades       VersioBaseDades  @relation(fields: [versioBaseDadesId], references: [id], onDelete: Restrict)
+  auditories            MaterialAuditLog[]
+  createdAt             DateTime         @default(now())
+  updatedAt             DateTime         @updatedAt
+
+  @@index([nom])
+  @@index([tipus, actiu])
+  @@index([versioBaseDadesId])
+}
+
+model MaterialAuditLog {
+  id            String   @id @default(cuid())
+  materialId    String
+  material      Material @relation(fields: [materialId], references: [id], onDelete: Cascade)
+  usuariId      String?
+  usuari        Usuari?  @relation(fields: [usuariId], references: [id], onDelete: SetNull)
+  accio         String
+  dadesAnteriors Json?
+  dadesNoves    Json?
+  createdAt     DateTime @default(now())
+
+  @@index([materialId, createdAt])
+}
+
+model FactorEmissioMaterial {
+  id                   String                    @id @default(cuid())
+  codiMaterial         String
+  nom                  String
+  categoria            CategoriaMaterialEmissio
+  factorEmissio        Float
+  unitat               UnitatMesura
+  fontDades            String
+  anyReferencia        Int
+  versioDap            String?
+  incertesaPercentatge Float?
+  esCredit             Boolean                   @default(false)
+  actiu                Boolean                   @default(true)
+  versioBaseDadesId    String
+  versioBaseDades      VersioBaseDades           @relation(fields: [versioBaseDadesId], references: [id], onDelete: Restrict)
+  createdAt            DateTime                  @default(now())
+  updatedAt            DateTime                  @updatedAt
+
+  @@unique([codiMaterial, versioBaseDadesId])
+  @@index([categoria, actiu])
+  @@index([versioBaseDadesId, actiu])
+}
+
+model FactorEmissioTransport {
+  id                 String          @id @default(cuid())
+  tipusVehicle       String
+  capacitatTonelades Float
+  factorEmissio      Float
+  unitat             UnitatMesura    @default(T_KM)
+  fontDades          String
+  anyReferencia      Int
+  combustible        CombustibleTipus
+  actiu              Boolean         @default(true)
+  versioBaseDadesId  String
+  versioBaseDades    VersioBaseDades @relation(fields: [versioBaseDadesId], references: [id], onDelete: Restrict)
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+
+  @@index([tipusVehicle, actiu])
+  @@index([versioBaseDadesId, actiu])
+}
+
+model ConstantCalorifica {
+  id                    String          @id @default(cuid())
+  nomMaterial           String
+  calorEspecific        Float
+  unitat                UnitatMesura    @default(KG)
+  temperaturaReferencia Float?
+  fontDades             String
+  actiu                 Boolean         @default(true)
+  versioBaseDadesId     String
+  versioBaseDades       VersioBaseDades @relation(fields: [versioBaseDadesId], references: [id], onDelete: Restrict)
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
+
+  @@index([nomMaterial, actiu])
+  @@index([versioBaseDadesId, actiu])
+}
+
+model CombustibleFabricacio {
+  id                    String          @id @default(cuid())
+  nomCombustible        CombustibleTipus
+  poderCalorificInferior Float
+  unitatPoderCalorific  UnitatMesura    @default(MJ)
+  factorEmissio         Float
+  unitatFactorEmissio   UnitatMesura    @default(KG)
+  fontDades             String
+  anyReferencia         Int
+  actiu                 Boolean         @default(true)
+  versioBaseDadesId     String
+  versioBaseDades       VersioBaseDades @relation(fields: [versioBaseDadesId], references: [id], onDelete: Restrict)
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
+
+  @@unique([nomCombustible, versioBaseDadesId])
+  @@index([versioBaseDadesId, actiu])
+}
+
+model ConsumElectric {
+  id                 String             @id @default(cuid())
+  tipusConsum        TipusConsumElectric
+  consumKwhPerTona   Float
+  factorEmissioRed   Float
+  factorEmissioGrupo Float
+  fontDades          String
+  anyReferencia      Int
+  actiu              Boolean            @default(true)
+  versioBaseDadesId  String
+  versioBaseDades    VersioBaseDades    @relation(fields: [versioBaseDadesId], references: [id], onDelete: Restrict)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  @@unique([tipusConsum, versioBaseDadesId])
+  @@index([versioBaseDadesId, actiu])
+}
+
+model EquipPosadaEnObra {
+  id                    String          @id @default(cuid())
+  nomEquip              String
+  tipus                 String
+  factorEmissio         Float
+  rendimentHoresPerTona Float
+  unitat                UnitatMesura    @default(H)
+  fontDades             String
+  actiu                 Boolean         @default(true)
+  versioBaseDadesId     String
+  versioBaseDades       VersioBaseDades @relation(fields: [versioBaseDadesId], references: [id], onDelete: Restrict)
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
+
+  @@index([tipus, actiu])
+  @@index([versioBaseDadesId, actiu])
+}
+
+model LimitNormatiuEmissions {
+  id               String          @id @default(cuid())
+  tipologiaMescla  TipologiaMescla
+  etapa            EtapaEmissions
+  valorLimit       Float
+  unitat           UnitatMesura    @default(T)
+  fontNormativa    String
+  dataEntradaVigor DateTime
+  actiu            Boolean         @default(true)
+  versioBaseDadesId String
+  versioBaseDades  VersioBaseDades @relation(fields: [versioBaseDadesId], references: [id], onDelete: Restrict)
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  @@index([tipologiaMescla, etapa, actiu])
+  @@index([versioBaseDadesId, actiu])
+}
+
+model EmissionsChangeLog {
+  id                 String            @id @default(cuid())
+  versioBaseDadesId  String
+  versioBaseDades    VersioBaseDades   @relation(fields: [versioBaseDadesId], references: [id], onDelete: Cascade)
+  usuariId           String?
+  usuari             Usuari?           @relation(fields: [usuariId], references: [id], onDelete: SetNull)
+  tipusCanvi         TipusCanviEmissio
+  entitat            String
+  registreId         String
+  valorsAnteriors    Json?
+  valorsNous         Json?
+  createdAt          DateTime          @default(now())
+
+  @@index([versioBaseDadesId, createdAt])
+  @@index([entitat, registreId])
+}
+
+model RefreshToken {
+  id         String   @id @default(cuid())
+  tokenHash  String   @unique
+  expiresAt  DateTime
+  revokedAt  DateTime?
+  usuariId   String
+  usuari     Usuari   @relation(fields: [usuariId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+
+  @@index([usuariId, revokedAt])
+}
+
+model Ubicacio {
+  id             String        @id @default(cuid())
+  nom            String
+  tipus          TipusUbicacio
+  descripcio     String?
+  adreca         String?
+  latitud        Decimal       @db.Decimal(10, 7)
+  longitud       Decimal       @db.Decimal(10, 7)
+  organitzacioId String
+  organitzacio   Organitzacio  @relation(fields: [organitzacioId], references: [id], onDelete: Cascade)
+  actiu          Boolean       @default(true)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  @@index([organitzacioId, tipus, actiu])
+  @@index([nom])
+}

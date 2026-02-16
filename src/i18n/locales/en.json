@@ -1,0 +1,163 @@
+{
+  "app": {
+    "name": "Emissionsv2 SaaS",
+    "subtitle": "Pavement and environmental certification platform",
+    "tenant": "Tenant",
+    "demoOrg": "Demo Org"
+  },
+  "language": {
+    "label": "Language",
+    "ca": "Catalan",
+    "es": "Spanish",
+    "en": "English",
+    "fr": "French"
+  },
+  "auth": {
+    "loginTitle": "Sign in",
+    "registerTitle": "Create account",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "name": "Name",
+    "lastName": "Last name",
+    "organization": "Organization",
+    "submitLogin": "Sign in",
+    "submitRegister": "Register",
+    "submittingLogin": "Signing in...",
+    "submittingRegister": "Registering...",
+    "noAccount": "No account?",
+    "haveAccount": "Already have an account?",
+    "goRegister": "Register",
+    "goLogin": "Sign in",
+    "loginError": "Could not sign in",
+    "registerError": "Could not complete registration",
+    "validation": {
+      "emailInvalid": "Invalid email",
+      "passwordRequired": "Password is required",
+      "organizationRequired": "Organization name is required",
+      "nameRequired": "Name is required",
+      "passwordMin": "Minimum 10 characters",
+      "passwordUpper": "One uppercase letter is required",
+      "passwordLower": "One lowercase letter is required",
+      "passwordNumber": "One number is required",
+      "passwordSpecial": "One special character is required",
+      "passwordConfirm": "Confirm your password",
+      "passwordMismatch": "Passwords do not match"
+    }
+  },
+  "dashboard": {
+    "title": "Emissionsv2 Platform",
+    "authenticatedAs": "Authenticated as {{email}}.",
+    "userFallback": "user",
+    "createCertification": "Create certification",
+    "projects": "Projects",
+    "materials": "Materials",
+    "versions": "Versions",
+    "emissionsFactors": "Emission factors",
+    "logout": "Logout",
+    "kpi": {
+      "activeTenants": "Active tenants",
+      "optimizedPavements": "Optimized pavements",
+      "certificatesIssued": "Issued certificates"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "newProject": "New project",
+    "filters": "Filters",
+    "projectNamePlaceholder": "Project name",
+    "allStatuses": "All statuses",
+    "status": {
+      "DRAFT": "Draft",
+      "ACTIVE": "Active",
+      "COMPLETED": "Completed",
+      "ARCHIVED": "Archived"
+    },
+    "list": "Projects list",
+    "code": "Code",
+    "name": "Name",
+    "date": "Date",
+    "actions": "Actions",
+    "detail": "Detail",
+    "delete": "Delete",
+    "loading": "Loading...",
+    "empty": "No projects",
+    "prev": "Previous",
+    "next": "Next",
+    "pageOf": "Page {{page}} of {{totalPages}}",
+    "createModalTitle": "Create project",
+    "invalidProject": "Invalid project",
+    "backToList": "Back to list",
+    "editModal": "Edit in modal",
+    "detailTitle": "Project detail"
+  },
+  "certificates": {
+    "pageTitle": "PDF certificate generator",
+    "generatorTitle": "Certificate generator",
+    "listTitle": "Certificates list",
+    "previewTitle": "Certificate preview",
+    "manufacturer": "Manufacturer",
+    "project": "Project",
+    "work": "Worksite",
+    "mix": "Mix",
+    "regulatoryResult": "Regulatory result",
+    "compliant": "Compliant",
+    "nonCompliant": "Non-compliant",
+    "progress": "Progress: {{value}}%",
+    "ready": "Ready to generate PDF",
+    "generate": "Generate PDF",
+    "generating": "Generating...",
+    "refresh": "Refresh",
+    "download": "Download",
+    "revoke": "Revoke",
+    "code": "Code",
+    "total": "Total (kg CO2e/t)",
+    "state": "Status",
+    "actions": "Actions",
+    "empty": "No certificates issued.",
+    "errors": {
+      "generate": "Could not generate certificate",
+      "list": "Could not load certificates",
+      "get": "Could not load certificate",
+      "revoke": "Could not revoke certificate",
+      "download": "Could not download PDF"
+    },
+    "status": {
+      "VALID": "Valid",
+      "CADUCAT": "Expired",
+      "REVOCAT": "Revoked"
+    }
+  },
+  "projectForm": {
+    "close": "Close",
+    "code": "Code",
+    "name": "Name",
+    "description": "Description",
+    "status": "Status",
+    "imd": "AADT",
+    "vp": "% heavy vehicles",
+    "layoutType": "Road layout",
+    "climateZone": "Climate zone",
+    "life": "Service life",
+    "growth": "Annual growth",
+    "lat": "Latitude",
+    "lng": "Longitude",
+    "saveDraft": "Save as draft",
+    "saving": "Saving...",
+    "save": "Save",
+    "validation": {
+      "codeRequired": "Code is required",
+      "nameRequired": "Name is required"
+    }
+  },
+  "bim": {
+    "title": "BIM exporter (IFC4)",
+    "structureToExport": "Structure to export",
+    "downloadIfc": "Download IFC",
+    "compatibility": "Compatibility and import",
+    "revit": "Revit: File > Open > IFC or Link IFC.",
+    "archicad": "ArchiCAD: File > Interoperability > IFC > Open IFC Model.",
+    "tekla": "Tekla: File > Import > Insert reference model > IFC.",
+    "freecad": "FreeCAD: BIM Workbench > Import IFC."
+  }
+}

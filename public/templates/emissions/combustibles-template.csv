@@ -1,0 +1,3 @@
+nom_combustible;poder_calorific_inferior;unitat_poder_calorific;factor_emissio;unitat_factor_emissio;font_dades;any_referencia
+GASOLEO;43;MJ;3.17;KG;SEVE V4.0;2022
+GAS_NATURAL;48.31;MJ;70.19;GJ;Ecoinvent 3.12;2024

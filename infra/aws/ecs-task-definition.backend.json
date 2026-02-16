@@ -1,0 +1,44 @@
+{
+  "family": "emissionsv2-backend",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "executionRoleArn": "arn:aws:iam::<account-id>:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::<account-id>:role/emissionsv2BackendTaskRole",
+  "containerDefinitions": [
+    {
+      "name": "backend",
+      "image": "ghcr.io/<org>/emissionsv2-backend:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 4000,
+          "hostPort": 4000,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        { "name": "NODE_ENV", "value": "production" },
+        { "name": "PORT", "value": "4000" },
+        { "name": "LOG_LEVEL", "value": "info" },
+        { "name": "AWS_REGION", "value": "eu-west-1" }
+      ],
+      "secrets": [
+        { "name": "DATABASE_URL", "valueFrom": "arn:aws:secretsmanager:eu-west-1:<account-id>:secret:emissions/db" },
+        { "name": "REDIS_URL", "valueFrom": "arn:aws:secretsmanager:eu-west-1:<account-id>:secret:emissions/redis" },
+        { "name": "JWT_ACCESS_SECRET", "valueFrom": "arn:aws:secretsmanager:eu-west-1:<account-id>:secret:emissions/jwt/access" },
+        { "name": "JWT_REFRESH_SECRET", "valueFrom": "arn:aws:secretsmanager:eu-west-1:<account-id>:secret:emissions/jwt/refresh" },
+        { "name": "SENTRY_DSN", "valueFrom": "arn:aws:secretsmanager:eu-west-1:<account-id>:secret:emissions/sentry" }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/emissionsv2-backend",
+          "awslogs-region": "eu-west-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}

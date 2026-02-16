@@ -1,0 +1,37 @@
+{
+  "items": [
+    {
+      "id": "d5891aa9-79d2-4565-86bc-302bab384e52",
+      "codi": "CERT-2026-0242193E",
+      "organitzacioId": "cmlocllbd0000ptgsw36fj5qh",
+      "projecteNom": "Projecte demostracio",
+      "obraNom": "Obra tram nord",
+      "fabricantNom": "Fabricant Demo, SL",
+      "mesclaNom": "MBC-16 Surf",
+      "tipologiaMescla": "MBC_CONVENCIONAL",
+      "estat": "VALID",
+      "dataEmissio": "2026-02-16T06:46:29.801Z",
+      "dataCaducitat": "2027-02-16T06:46:29.801Z",
+      "versioMetodologia": "OC 3/2024",
+      "quantitatTones": 1250,
+      "emissions": {
+        "A1": 24,
+        "A2": 7,
+        "A3": 11,
+        "A4": 6,
+        "A5": 4,
+        "total": 52,
+        "limit": 70,
+        "unitat": "kg CO2e/t"
+      },
+      "annexText": "Annex de calcul generat automaticament.",
+      "signaturaDigital": false,
+      "idioma": "es",
+      "pdfPath": "/app/storage/certificats/d5891aa9-79d2-4565-86bc-302bab384e52.pdf",
+      "pdfUrl": "/api/certificats/d5891aa9-79d2-4565-86bc-302bab384e52/pdf",
+      "createdBy": "cmlocllca0002ptgslc6pji85",
+      "createdAt": "2026-02-16T06:46:29.829Z",
+      "updatedAt": "2026-02-16T06:46:29.829Z"
+    }
+  ]
+}

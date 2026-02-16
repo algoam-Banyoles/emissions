@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emissions-backend
+  labels:
+    app: emissions-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: emissions-backend
+  template:
+    metadata:
+      labels:
+        app: emissions-backend
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/example/emissionsv2-backend:latest
+          ports:
+            - containerPort: 4000
+          envFrom:
+            - configMapRef:
+                name: emissions-config
+            - secretRef:
+                name: emissions-secrets
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 4000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 4000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
+            limits:
+              cpu: "1"
+              memory: "1Gi"

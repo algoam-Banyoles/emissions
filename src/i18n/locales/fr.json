@@ -1,0 +1,163 @@
+{
+  "app": {
+    "name": "Emissionsv2 SaaS",
+    "subtitle": "Plateforme de chausses et certification environnementale",
+    "tenant": "Tenant",
+    "demoOrg": "Organisation Demo"
+  },
+  "language": {
+    "label": "Langue",
+    "ca": "Catalan",
+    "es": "Espagnol",
+    "en": "Anglais",
+    "fr": "Francais"
+  },
+  "auth": {
+    "loginTitle": "Connexion",
+    "registerTitle": "Creer un compte",
+    "email": "Email",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "name": "Prenom",
+    "lastName": "Nom",
+    "organization": "Organisation",
+    "submitLogin": "Se connecter",
+    "submitRegister": "S'inscrire",
+    "submittingLogin": "Connexion...",
+    "submittingRegister": "Inscription...",
+    "noAccount": "Pas de compte ?",
+    "haveAccount": "Vous avez deja un compte ?",
+    "goRegister": "S'inscrire",
+    "goLogin": "Connexion",
+    "loginError": "Connexion impossible",
+    "registerError": "Inscription impossible",
+    "validation": {
+      "emailInvalid": "Email invalide",
+      "passwordRequired": "Le mot de passe est obligatoire",
+      "organizationRequired": "Le nom de l'organisation est obligatoire",
+      "nameRequired": "Le nom est obligatoire",
+      "passwordMin": "Minimum 10 caracteres",
+      "passwordUpper": "Une majuscule est requise",
+      "passwordLower": "Une minuscule est requise",
+      "passwordNumber": "Un chiffre est requis",
+      "passwordSpecial": "Un caractere special est requis",
+      "passwordConfirm": "Confirmez le mot de passe",
+      "passwordMismatch": "Les mots de passe ne correspondent pas"
+    }
+  },
+  "dashboard": {
+    "title": "Plateforme Emissionsv2",
+    "authenticatedAs": "Authentifie en tant que {{email}}.",
+    "userFallback": "utilisateur",
+    "createCertification": "Creer une certification",
+    "projects": "Projets",
+    "materials": "Materiaux",
+    "versions": "Versions",
+    "emissionsFactors": "Facteurs d'emission",
+    "logout": "Deconnexion",
+    "kpi": {
+      "activeTenants": "Tenants actifs",
+      "optimizedPavements": "Chaussees optimisees",
+      "certificatesIssued": "Certificats emis"
+    }
+  },
+  "projects": {
+    "title": "Projets",
+    "newProject": "Nouveau projet",
+    "filters": "Filtres",
+    "projectNamePlaceholder": "Nom du projet",
+    "allStatuses": "Tous les statuts",
+    "status": {
+      "DRAFT": "Brouillon",
+      "ACTIVE": "Actif",
+      "COMPLETED": "Termine",
+      "ARCHIVED": "Archive"
+    },
+    "list": "Liste des projets",
+    "code": "Code",
+    "name": "Nom",
+    "date": "Date",
+    "actions": "Actions",
+    "detail": "Detail",
+    "delete": "Supprimer",
+    "loading": "Chargement...",
+    "empty": "Aucun projet",
+    "prev": "Precedent",
+    "next": "Suivant",
+    "pageOf": "Page {{page}} sur {{totalPages}}",
+    "createModalTitle": "Creer un projet",
+    "invalidProject": "Projet invalide",
+    "backToList": "Retour a la liste",
+    "editModal": "Modifier dans une fenetre",
+    "detailTitle": "Detail du projet"
+  },
+  "certificates": {
+    "pageTitle": "Generateur de certificats PDF",
+    "generatorTitle": "Generateur de certificat",
+    "listTitle": "Liste des certificats",
+    "previewTitle": "Apercu du certificat",
+    "manufacturer": "Fabricant",
+    "project": "Projet",
+    "work": "Chantier",
+    "mix": "Melange",
+    "regulatoryResult": "Resultat reglementaire",
+    "compliant": "Conforme",
+    "nonCompliant": "Non conforme",
+    "progress": "Progression : {{value}}%",
+    "ready": "Pret a generer le PDF",
+    "generate": "Generer PDF",
+    "generating": "Generation...",
+    "refresh": "Actualiser",
+    "download": "Telecharger",
+    "revoke": "Revoquer",
+    "code": "Code",
+    "total": "Total (kg CO2e/t)",
+    "state": "Statut",
+    "actions": "Actions",
+    "empty": "Aucun certificat emis.",
+    "errors": {
+      "generate": "Generation du certificat impossible",
+      "list": "Chargement des certificats impossible",
+      "get": "Chargement du certificat impossible",
+      "revoke": "Revocation du certificat impossible",
+      "download": "Telechargement du PDF impossible"
+    },
+    "status": {
+      "VALID": "Valide",
+      "CADUCAT": "Expire",
+      "REVOCAT": "Revoque"
+    }
+  },
+  "projectForm": {
+    "close": "Fermer",
+    "code": "Code",
+    "name": "Nom",
+    "description": "Description",
+    "status": "Statut",
+    "imd": "TMJA",
+    "vp": "% poids lourds",
+    "layoutType": "Type de trace",
+    "climateZone": "Zone climatique",
+    "life": "Duree de vie",
+    "growth": "Croissance annuelle",
+    "lat": "Latitude",
+    "lng": "Longitude",
+    "saveDraft": "Enregistrer comme brouillon",
+    "saving": "Enregistrement...",
+    "save": "Enregistrer",
+    "validation": {
+      "codeRequired": "Code obligatoire",
+      "nameRequired": "Nom obligatoire"
+    }
+  },
+  "bim": {
+    "title": "Export BIM (IFC4)",
+    "structureToExport": "Structure a exporter",
+    "downloadIfc": "Telecharger IFC",
+    "compatibility": "Compatibilite et import",
+    "revit": "Revit: File > Open > IFC ou Link IFC.",
+    "archicad": "ArchiCAD: File > Interoperability > IFC > Open IFC Model.",
+    "tekla": "Tekla: File > Import > Insert reference model > IFC.",
+    "freecad": "FreeCAD: BIM Workbench > Import IFC."
+  }
+}

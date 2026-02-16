@@ -1,0 +1,30 @@
+name: emissionsv2-prod
+
+services:
+  backend:
+    image: ghcr.io/${GITHUB_REPOSITORY_OWNER:-emissionsv2}/emissionsv2-backend:${TAG:-latest}
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      DATABASE_URL: ${DATABASE_URL}
+      REDIS_URL: ${REDIS_URL}
+      CORS_ORIGIN: ${CORS_ORIGIN}
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
+      ACCESS_TOKEN_TTL: ${ACCESS_TOKEN_TTL:-15m}
+      REFRESH_TOKEN_TTL_DAYS: ${REFRESH_TOKEN_TTL_DAYS:-7}
+      SENTRY_DSN: ${SENTRY_DSN:-}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      AWS_REGION: ${AWS_REGION:-eu-west-1}
+      S3_BUCKET: ${S3_BUCKET:-}
+    ports:
+      - "4000:4000"
+
+  frontend:
+    image: ghcr.io/${GITHUB_REPOSITORY_OWNER:-emissionsv2}/emissionsv2-frontend:${TAG:-latest}
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
